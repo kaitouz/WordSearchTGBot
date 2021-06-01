@@ -31,8 +31,8 @@ The game ends if the player finds 10 words in the board or gets the wrong answer
 
 ## Screenshots
 
-![Game started](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-![Game is running](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-![Game ended](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![Game started](https://github.com/thienkaito/WordSearchTGBot/blob/master/src/Capture.PNG)
+![Game is running](https://github.com/thienkaito/WordSearchTGBot/blob/master/src/Capture2.PNG)
+![Game ended](https://github.com/thienkaito/WordSearchTGBot/blob/master/src/Capture3.PNG)
 
   
