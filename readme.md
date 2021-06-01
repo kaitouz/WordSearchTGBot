@@ -5,7 +5,7 @@ A bot to play Word Search game on telegram
 
 ## Authors
 
-- [@katherinepeterson](https://www.github.com/katherinepeterson)
+- [@thienkaito](https://www.github.com/thienkaito)
 
 
 ## Documentation
