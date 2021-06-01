@@ -4,7 +4,7 @@
 This is a very simple puzzle game for Telegram users, where the player try to find some words in a grid of letters in horizontal, vertical and diagonal directions.
 
 
-![Logo](https://github.com/thienkaito/WordSearchTGBot/blob/master/src/logo_trans.png)
+![Logo](https://github.com/thienkaito/WordSearchTGBot/blob/master/src/logo.png)
 
 
 ## Authors
@@ -21,24 +21,18 @@ This is a very simple puzzle game for Telegram users, where the player try to fi
 **Platform:** Telegram Bot (Telegram Bot API)
 
 
-## Demo
+## Main function
 
-Insert gif or link to demo
+Create a 10x10 board based on a list of common English words, and it must have at least 10 answers.
 
+Check the player's answer
+
+The game ends if the player finds 10 words in the board or gets the wrong answer more than 3 times.
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-
-
-## Usage/Examples
-
-```javascript
-import Component from 'my-project'
-
-function App() {
-  return <Component />
-}
-```
+![Game started](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![Game is running](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![Game ended](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
   

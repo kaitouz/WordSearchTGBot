@@ -27,6 +27,7 @@ public class Game {
         //   List<String> solutions = new ArrayList<>();
         List<String> Solutions = new ArrayList<>();
         List<String> WordAnswered = new ArrayList<>();
+        List<String> PrintWordAnswered = new ArrayList<>();
         List<Integer> PosAnswered = new ArrayList<>();
     }
 
@@ -73,6 +74,7 @@ public class Game {
                         rr += DIRS[dir][1];
                     }
                     this.grid.WordAnswered.add(Ans);
+                    grid.PrintWordAnswered.add(String.format("%-15s", Ans));
                     return 1;
                 }
             }
@@ -172,7 +174,7 @@ public class Game {
         return lettersPlaced;
     }
 
-    public static void printResult(Grid grid) {
+    public void printResult() {
         if(grid == null || grid.numAttempts == 0) {
             System.out.println("No grid to display");
             return;
@@ -182,16 +184,7 @@ public class Game {
         System.out.println("Number of Words : " + size);
         System.out.println("\n      ");
         System.out.print("  ");
-        for(int c = 0; c < nCols; c++) {
-            System.out.print(" " + c + " ");
-        }
-        //System.out.println();
-        for(int r = 0; r < nRows; r++) {
-            System.out.printf("%n%d ", r);
-            for(int c = 0; c < nCols; c++) {
-                System.out.printf(" %c ", grid.cells[r][c]);
-            }
-        }
+
         System.out.println("\n");
         for(int i = 0; i < size - 1; i += 2) {
             System.out.printf("%s %s%n", grid.Solutions.get(i), grid.Solutions.get(i + 1));
@@ -202,11 +195,12 @@ public class Game {
     }
 
     public String CreateTable() {
-        String ans = "";
+        String ans = "`                      ";
+
         for(int i = 0; i < this.GameHeart; i++) {
-            ans = ans + "\u2764";
+            ans = ans + "\ud83d\udda4";
         }
-        if(this.GameHeart > 0) ans = ans + "\n";
+        ans = ans + "`\n";
         ans = ans + "`  ";
         for(int c = 0; c < nCols; c++) {
             if(c == 0) ans = ans + "_";
@@ -233,11 +227,19 @@ public class Game {
 
         ans = ans + String.format("`Find %d words\\!!!\\ \n`", (10) - (this.grid.WordAnswered.size()));
 
-        int size = grid.Solutions.size();
+        int size = this.grid.PrintWordAnswered.size();
 
-        for(int i = 0; i < size - 1; i += 2) {
-            ans = ans + "`" +  this.grid.Solutions.get(i) + " " + this.grid.Solutions.get(i + 1) + "`" + "\n";
+        if(size > 0) {
+            ans = ans + "\n`Words found:`\n";
+            for(int i = 0; i < size - 1; i += 2) {
+                ans = ans + "`" +  this.grid.PrintWordAnswered.get(i) + " " + this.grid.PrintWordAnswered.get(i + 1) + "`" + "\n";
+            }
+            if(size % 2 == 1) {
+                ans = ans + "`" + (grid.PrintWordAnswered.get(size - 1)) + "`";
+            }
         }
+
+
         return ans;
 
     }

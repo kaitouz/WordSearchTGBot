@@ -44,31 +44,47 @@ public class MyAmazingBot extends TelegramLongPollingBot {
                     Game NewGame = new Game();
                     GameList.put(ChatId, NewGame);
                     String table = GameList.get(ChatId).CreateTable();
-                    table = "Game started" + "\n" + table;
-                    System.out.println(table);
+                    GameList.get(ChatId).printResult();
+                    table = "`    \uD83C\uDD36\uD83C\uDD30\uD83C\uDD3C\uD83C\uDD34 \uD83C\uDD42\uD83C\uDD43\uD83C\uDD30\uD83C\uDD41\uD83C\uDD43\uD83C\uDD34\uD83C\uDD33`" + "\n" + table;
                     message.setText(table);
                 }
                 else {
-                    String a = "\u2665" + "ddqd";
+                    String a = "`Game is not running`" ;
                     message.setText(a);
                 }
             } else {
                 if (ChatText.compareTo("Quit Game") == 0) {
+                    String b = "`\uD83D\uDC94 GAME OVER \uD83D\uDC94` \n `You cannot give` \n `up just yet...`";
                     GameList.remove(ChatId);
-                    message.setText("Game ended");
+                    message.setText(b);
                 } else {
                     int check = GameList.get(ChatId).CheckAnswer(ChatText);
 
                     System.out.println(check);
+
+
                     if (check != 0) {
-
-
-                    } else GameList.get(ChatId).GameHeart--;
-
-                    String content = "Game is running\n";
-                    content = content + GameList.get(ChatId).CreateTable();
-                    message.setText(content);
-
+                        if(GameList.get(ChatId).grid.WordAnswered.size() == 10) {
+                            String a = "`\uD83C\uDFC6  Congratulation\\!!!\\ \uD83C\uDFC6` \n  `\uD83D\uDCAF You are amazing \uD83D\uDCAF`" ;
+                            message.setText(a);
+                            GameList.remove(ChatId);
+                        } else {
+                            String content = "`Correct`\n";
+                            content = content + GameList.get(ChatId).CreateTable();
+                            message.setText(content);
+                        }
+                    } else {
+                        if(GameList.get(ChatId).GameHeart == 0) {
+                            String b = "`\uD83D\uDC94 GAME OVER \uD83D\uDC94` \n `You cannot give` \n `up just yet...`";
+                            message.setText(b);
+                            GameList.remove(ChatId);
+                        } else {
+                            GameList.get(ChatId).GameHeart--;
+                            String content = "`Incorrect`\n";
+                            content = content + GameList.get(ChatId).CreateTable();
+                            message.setText(content);
+                        }
+                    }
                 }
             }
 
