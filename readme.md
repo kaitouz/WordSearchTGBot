@@ -1,28 +1,24 @@
 
 # Word Search TG Bot
 
-A bot to play Word Search game on telegram
+This is a very simple puzzle game for Telegram users, where the player try to find some words in a grid of letters in horizontal, vertical and diagonal directions.
+
+
+![Logo](httpsm/)
+
 
 ## Authors
 
-- [@thienkaito](https://www.github.com/thienkaito)
+- [@thienkaito](https://www.github.com/thienkaito) [Ле Нгок Тхиен - P3122]
 
 
-## Documentation
+## Tech
 
-[Documentation](https://linktodocumentation)
+**Programming Language:** Java
 
+**Project management tools:** Maven
 
-## Support
-
-For support, email fake@fake.com or join our Slack channel.
-
-
-## Tech Stack
-
-**Client:** React, Redux, TailwindCSS
-
-**Server:** Node, Express
+**Platform:** Telegram Bot (Telegram Bot API)
 
 
 ## Demo
@@ -35,10 +31,14 @@ Insert gif or link to demo
 ![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
 
-## Roadmap
+## Usage/Examples
 
-- Additional browser support
+```javascript
+import Component from 'my-project'
 
-- Add more integrations
+function App() {
+  return <Component />
+}
+```
 
   
