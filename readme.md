@@ -34,7 +34,9 @@ Build the rules of the game: The game ends if the player finds 10 words in the b
 ## Screenshots
 
 ![Game started](https://github.com/thienkaito/WordSearchTGBot/blob/master/Image/Capture.PNG)
-![Game is running](https://github.com/thienkaito/WordSearchTGBot/blob/master/Image/Capture2.PNG)
-![Game ended](https://github.com/thienkaito/WordSearchTGBot/blob/master/Image/Capture3.PNG)
+![Correct](https://github.com/thienkaito/WordSearchTGBot/blob/master/Image/Capture2.PNG)
+![Incorrect](https://github.com/thienkaito/WordSearchTGBot/blob/master/Image/Capture3.PNG)
+![Win](https://github.com/thienkaito/WordSearchTGBot/blob/master/Image/Capture4.PNG)
+![lose](https://github.com/thienkaito/WordSearchTGBot/blob/master/Image/Capture5.PNG)
 
   
