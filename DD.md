@@ -38,7 +38,11 @@ Detailed description of the project.
   | Variable    | Function                           | Type                       |
   | :--------   | :----------------------------------| :------------------------- |
   | `grid`      |  The grid of this Game         | `Class Grid`               |
-  | `WordAnswered`      | The words that have been answered       | `Class Grid`               |
+  | `WordAnswered`      | The words that have been answered       | `List<String>`               |
+  | `PosAnswered`      | The pos of the words that have been answered       | `List<Integer> `               |
+  | `GameHeart`      | The current Lives that player has       | `List<Integer> `               |
+
+
 
 
 - Class methods:
@@ -46,29 +50,22 @@ Detailed description of the project.
   | Name         | Function                           | Type                                                                |
   | :--------    | :-------                           | :------------------------- |
   | `Game()`   | Initialize Game: create new grid,...                                     | `String` |
+  | `readWords(String filename)`   | Read list of word from **filename**                                   | `List<String>` |
+  | `createWordSearch(List<String> words)`   | Try to fill up the empty grid with random words from **List<String> words**                                          | `Grid` |
+  | `tryPlaceWord(String word)`   | Try to place **word** in the grid. | `int` |
+  | `tryLocation(String word, int dir, int pos)`   | Try to location the **word** with position and direction. | `int` |
   | `CheckAnswer(String Ans)`   | Check the Answer.                                            | `Boolean` |
   | `CreateTable()`   | This method will convert grid of this game to String. | `String` |
 
 ### 3. Class Grid
 
-#### The Grid class store a character grid and some related information.
+#### The Grid class store a character grid and related information.
 - Class variables
 
   | Variable    | Function                           | Type                       |
   | :--------   | :----------------------------------| :------------------------- |
   | `cells`      |  Map of grid         | `char[][]`               |
   | `Solutions`      | The list of random words, which generated this grid       | `List<String>`
-  | `WordsDic`      | The list of common English words       | `List<String>`
-
-- Class methods:
-
-  | Name         | Function                           | Type                                                                |
-  | :--------    | :-------                           | :------------------------- |
-  | `readWords(String filename)`   | Read list of word from "filename"                                   | `List<String>` |
-  | `createWordSearch(List<String> words)`   | Try to fill up the empty grid with random words from **List<String> words**                                          | `Grid` |
-  | `tryPlaceWord(String word)`   | Try to place **word** in the grid. | `int` |
-  | `tryLocation(String word, int dir, int pos)`   | Try to location the **word** with position and direction. | `int` |
-
 
 ## Execution plan
 
