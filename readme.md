@@ -4,7 +4,7 @@
 This is a very simple puzzle game for Telegram users, where the player try to find some words in a grid of letters in horizontal, vertical and diagonal directions.
 
 
-![Logo](https://github.com/thienkaito/WordSearchTGBot/blob/master/src/logo.png)
+![Logo](https://github.com/thienkaito/WordSearchTGBot/blob/master/src/logo_resize.png)
 
 
 ## Authors
