@@ -9,6 +9,9 @@ public class Game {
     Grid grid;
     List<String> WordsDic;
     int GameHeart;
+    List<String> WordAnswered = new ArrayList<>();
+    List<String> PrintWordAnswered = new ArrayList<>();
+    List<Integer> PosAnswered = new ArrayList<>();
 
     public Game() {
         this.GameHeart = 3;
@@ -21,15 +24,6 @@ public class Game {
         this.grid = a;
     }
 
-    public static class Grid {
-        int numAttempts;
-        char[][] cells = new char[nRows][nCols];
-        List<String> Solutions = new ArrayList<>();
-        List<String> WordAnswered = new ArrayList<>();
-        List<String> PrintWordAnswered = new ArrayList<>();
-        List<Integer> PosAnswered = new ArrayList<>();
-    }
-
     // toa do cua 8 huong
     public static final int[][] DIRS = {{1,0}, {0,1}, {1,1}, {1,-1}, {-1,0}, {0,-1}, {-1,-1}, {-1,1}};
     public static final int nRows = 10, nCols = 10;
@@ -39,7 +33,7 @@ public class Game {
 
     public int CheckAnswer(String Ans) {
         Ans = Ans.toUpperCase();
-        if(this.grid.WordAnswered.contains(Ans))
+        if(this.WordAnswered.contains(Ans))
             return 0;
         if(!this.WordsDic.contains(Ans))
             return 0;
@@ -65,15 +59,14 @@ public class Game {
                     rr += DIRS[dir][1];
                 }
                 if(check == 1) {
-                    System.out.println(pos);
 
                     for(i = 0, rr = r, cc = c; i < length; i++) {
-                        this.grid.PosAnswered.add(rr*nCols + cc);
+                        this.PosAnswered.add(rr*nCols + cc);
                         cc += DIRS[dir][0];
                         rr += DIRS[dir][1];
                     }
-                    this.grid.WordAnswered.add(Ans);
-                    grid.PrintWordAnswered.add(String.format("%-15s", Ans));
+                    this.WordAnswered.add(Ans);
+                    this.PrintWordAnswered.add(String.format("%-15s", Ans));
                     return 1;
                 }
             }
@@ -98,7 +91,7 @@ public class Game {
         return words;
     }
 
-    public static Grid createWordSearch(List<String> words) {
+    public Grid createWordSearch(List<String> words) {
         Grid grid = null;
         int numAttempts = 0;
 
@@ -109,7 +102,7 @@ public class Game {
             int cellsFilled = 0;
 
             for(String word : words) {
-                cellsFilled += tryPlaceWord(grid, word);
+                cellsFilled += tryPlaceWord(word);
 
                 if(cellsFilled == gridSize) {
                     if(grid.Solutions.size() >= minWords) {
@@ -122,14 +115,14 @@ public class Game {
         return grid;
     }
 
-    public static int tryPlaceWord(Grid grid, String word) {
+    public int tryPlaceWord(String word) {
         int randDir = RANDOM.nextInt(DIRS.length);
         int randPos = RANDOM.nextInt(gridSize);
         for(int dir = 0; dir < DIRS.length; dir++) {
             dir = (dir + randDir) % DIRS.length;
             for(int pos = 0; pos < gridSize; pos++) {
                 pos = (pos + randPos) % gridSize;
-                int lettersPlaced = tryLocation(grid, word, dir, pos);
+                int lettersPlaced = tryLocation(word, dir, pos);
                 if(lettersPlaced > 0)
                     return lettersPlaced;
             }
@@ -137,7 +130,7 @@ public class Game {
         return 0;
     }
 
-    public static int tryLocation(Grid grid, String word, int dir, int pos) {
+    public int tryLocation(String word, int dir, int pos) {
         int r = pos / nCols;
         int c = pos % nCols;
         int length = word.length();
@@ -148,15 +141,15 @@ public class Game {
             return 0;
         int i, rr, cc, overlaps = 0;
         for( i = 0, rr = r, cc = c; i < length; i++) {
-            if(grid.cells[rr][cc] != 0 && grid.cells[rr][cc] != word.charAt(i))
+            if(this.grid.cells[rr][cc] != 0 && this.grid.cells[rr][cc] != word.charAt(i))
                 return 0;
             cc += DIRS[dir][0];
             rr += DIRS[dir][1];
         }
         for( i = 0, rr = r, cc = c; i < length; i++) {
-            if (grid.cells[rr][cc] == word.charAt(i))
+            if (this.grid.cells[rr][cc] == word.charAt(i))
                 overlaps++;
-            else grid.cells[rr][cc] = word.charAt(i);
+            else this.grid.cells[rr][cc] = word.charAt(i);
             if (i < length - 1) {
                 cc += DIRS[dir][0];
                 rr += DIRS[dir][1];
@@ -164,13 +157,56 @@ public class Game {
         }
         int lettersPlaced = length - overlaps;
         if(lettersPlaced >= 0)
-        //  grid.solutions.add(String.format("%-10s %d,%d %d,%d", word, c, r, cc, rr));
-        {
-            // ValSolutions a = new ValSolutions(String.format("%-15s", word), false, c, r, cc, rr);
-            grid.Solutions.add(String.format("%-15s", word));
-        }
+            this.grid.Solutions.add(String.format("%-15s", word));
+
 
         return lettersPlaced;
+    }
+
+    public String CreateTable() {
+        String ans = "`                      ";
+        for(int i = 0; i < this.GameHeart; i++) {
+            ans = ans + "\ud83d\udda4";
+        }
+        ans = ans + "`\n`  ";
+        for(int c = 0; c < nCols; c++) {
+            if(c == 0) ans = ans + "_";
+            else ans = ans + "__";
+            ans = ans + String.valueOf(c);
+        }
+
+        ans = ans + "`";
+
+        for(int r = 0; r < nRows; r++) {
+            ans = ans + "\n`";
+            ans = ans + String.valueOf(r) + "\\|\\";
+            for(int c = 0; c < nCols; c++) {
+                int pos = r*nCols + c;
+                if(this.PosAnswered.contains(pos))
+                    ans = ans + "[" + String.valueOf(this.grid.cells[r][c]) + "]";
+                else
+                    ans = ans + " " + String.valueOf(this.grid.cells[r][c]) + " ";
+            }
+            ans = ans + "`";
+        }
+        ans = ans + "\n";
+        ans = ans + "\n";
+
+        ans = ans + String.format("`Find %d words\\!!!\\ \n`", (10) - (this.WordAnswered.size()));
+
+        int size = this.PrintWordAnswered.size();
+
+        if(size > 0) {
+            ans = ans + "\n`Words found:`\n";
+            for(int i = 0; i < size - 1; i += 2) {
+                ans = ans + "`" +  this.PrintWordAnswered.get(i) + " " + this.PrintWordAnswered.get(i + 1) + "`" + "\n";
+            }
+            if(size % 2 == 1) {
+                ans = ans + "`" + (PrintWordAnswered.get(size - 1)) + "`";
+            }
+        }
+        return ans;
+
     }
 
     public void printResult() {
@@ -191,56 +227,6 @@ public class Game {
         if(size % 2 == 1) {
             System.out.println(grid.Solutions.get(size - 1));
         }
-    }
-
-    public String CreateTable() {
-        String ans = "`                      ";
-
-        for(int i = 0; i < this.GameHeart; i++) {
-            ans = ans + "\ud83d\udda4";
-        }
-        ans = ans + "`\n";
-        ans = ans + "`  ";
-        for(int c = 0; c < nCols; c++) {
-            if(c == 0) ans = ans + "_";
-            else ans = ans + "__";
-            ans = ans + String.valueOf(c);
-        }
-
-        ans = ans + "`";
-
-        for(int r = 0; r < nRows; r++) {
-            ans = ans + "\n`";
-            ans = ans + String.valueOf(r) + "\\|\\";
-            for(int c = 0; c < nCols; c++) {
-                int pos = r*nCols + c;
-                if(this.grid.PosAnswered.contains(pos))
-                    ans = ans + "[" + String.valueOf(this.grid.cells[r][c]) + "]";
-                else
-                    ans = ans + " " + String.valueOf(this.grid.cells[r][c]) + " ";
-            }
-            ans = ans + "`";
-        }
-        ans = ans + "\n";
-        ans = ans + "\n";
-
-        ans = ans + String.format("`Find %d words\\!!!\\ \n`", (10) - (this.grid.WordAnswered.size()));
-
-        int size = this.grid.PrintWordAnswered.size();
-
-        if(size > 0) {
-            ans = ans + "\n`Words found:`\n";
-            for(int i = 0; i < size - 1; i += 2) {
-                ans = ans + "`" +  this.grid.PrintWordAnswered.get(i) + " " + this.grid.PrintWordAnswered.get(i + 1) + "`" + "\n";
-            }
-            if(size % 2 == 1) {
-                ans = ans + "`" + (grid.PrintWordAnswered.get(size - 1)) + "`";
-            }
-        }
-
-
-        return ans;
-
     }
 
 }

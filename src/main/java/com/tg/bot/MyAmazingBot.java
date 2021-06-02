@@ -13,7 +13,7 @@ import java.util.*;
 
 public class MyAmazingBot extends TelegramLongPollingBot {
 
-    HashMap<String, Game>    GameList = new HashMap<String, Game>();
+    HashMap<String,  Game>    GameList = new HashMap<String,  Game>();
 
     @Override
     public String getBotUsername() {
@@ -60,11 +60,8 @@ public class MyAmazingBot extends TelegramLongPollingBot {
                 } else {
                     int check = GameList.get(ChatId).CheckAnswer(ChatText);
 
-                    System.out.println(check);
-
-
                     if (check != 0) {
-                        if(GameList.get(ChatId).grid.WordAnswered.size() == 10) {
+                        if(GameList.get(ChatId).WordAnswered.size() == 10) {
                             String a = "`\uD83C\uDFC6  Congratulation\\!!!\\ \uD83C\uDFC6` \n  `\uD83D\uDCAF You are amazing \uD83D\uDCAF`" ;
                             message.setText(a);
                             GameList.remove(ChatId);
