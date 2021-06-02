@@ -13,9 +13,11 @@ public class Main {
     public static void main(String[] args) {
         try {
 
-            logger.info("Program í running");
+            logger.info("Program is running");
 
+            //Instantiate Telegram Bots API:
             TelegramBotsApi telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
+            //Register this bot:
             telegramBotsApi.registerBot(new MyAmazingBot());
 
         } catch (TelegramApiException e) {

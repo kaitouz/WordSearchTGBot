@@ -13,7 +13,6 @@
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-        <slf4j-api.version>1.7.30</slf4j-api.version>
     </properties>
 
 
@@ -29,9 +28,6 @@
             <artifactId>logback-classic</artifactId>
             <version>1.1.7</version>
         </dependency>
-
-
-
 
     </dependencies>
 
