@@ -13,7 +13,8 @@ public class Main {
     public static void main(String[] args) {
         try {
 
-            logger.info("Here I am");
+            logger.info("Program í running");
+
             TelegramBotsApi telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
             telegramBotsApi.registerBot(new MyAmazingBot());
 
