@@ -24,7 +24,6 @@ public class Game {
     public static class Grid {
         int numAttempts;
         char[][] cells = new char[nRows][nCols];
-        //   List<String> solutions = new ArrayList<>();
         List<String> Solutions = new ArrayList<>();
         List<String> WordAnswered = new ArrayList<>();
         List<String> PrintWordAnswered = new ArrayList<>();

@@ -4,7 +4,7 @@
 This is a very simple puzzle game for Telegram users, where the player try to find some words in a grid of letters in horizontal, vertical and diagonal directions.
 
 
-![Logo](https://github.com/thienkaito/WordSearchTGBot/blob/master/src/logo_resize.png)
+![Logo](https://github.com/thienkaito/WordSearchTGBot/blob/master/Image/logo_resize.png)
 
 
 ## Authors
@@ -33,8 +33,8 @@ Build the rules of the game: The game ends if the player finds 10 words in the b
 
 ## Screenshots
 
-![Game started](https://github.com/thienkaito/WordSearchTGBot/blob/master/src/Capture.PNG)
-![Game is running](https://github.com/thienkaito/WordSearchTGBot/blob/master/src/Capture2.PNG)
-![Game ended](https://github.com/thienkaito/WordSearchTGBot/blob/master/src/Capture3.PNG)
+![Game started](https://github.com/thienkaito/WordSearchTGBot/blob/master/Image/Capture.PNG)
+![Game is running](https://github.com/thienkaito/WordSearchTGBot/blob/master/Image/Capture2.PNG)
+![Game ended](https://github.com/thienkaito/WordSearchTGBot/blob/master/Image/Capture3.PNG)
 
   
