@@ -23,11 +23,13 @@ This is a very simple puzzle game for Telegram users, where the player try to fi
 
 ## Main function
 
+Using Telegram Bot API to receive and send messages to users.
+
 Create a 10x10 board based on a list of common English words, and it must have at least 10 answers.
 
-Check the player's answer
+Check the player's answer.
 
-The game ends if the player finds 10 words in the board or gets the wrong answer more than 3 times.
+Build the rules of the game: The game ends if the player finds 10 words in the board or gets the wrong answer more than 3 times.
 
 ## Screenshots
 
