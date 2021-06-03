@@ -4,7 +4,7 @@ Detailed description of the project.
 
 
 
-## Work Folw
+## Work Flow
 
 ![WorkFlow](https://github.com/thienkaito/WordSearchTGBot/blob/master/Image/Workflow.png)
 
