@@ -39,4 +39,7 @@ Build the rules of the game: The game ends if the player finds 10 words in the b
 ![Win](https://github.com/thienkaito/WordSearchTGBot/blob/master/Image/Capture4.PNG)
 ![lose](https://github.com/thienkaito/WordSearchTGBot/blob/master/Image/Capture5.PNG)
 
-  
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
